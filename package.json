@@ -1,0 +1,28 @@
+{
+  "author": "Tim Branyen (@tbranyen)",
+  "name": "backbone.cacheit",
+  "description": "Fetch caching made super simple in Backbone.",
+
+  "version": "0.1.0",
+
+  "homepage": "http://tbranyen.github.com/backbone.cacheit/",
+
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tbranyen/backbone.cacheit.git"
+  },
+
+  "jam": {
+    "dependencies": {
+      "lodash": "*",
+      "backbone": "*",
+      "jquery": "*"
+    },
+
+    "main": "backbone.cacheit.js",
+
+    "shim": {
+      "deps": ["jquery", "backbone", "lodash"]
+    }
+  }
+}
