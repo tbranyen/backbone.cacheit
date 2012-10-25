@@ -26,7 +26,7 @@ _.each(["Model", "Collection"], function(ctor) {
 
     // Return early.
     if (this._def && !options.reload && !this.reload) {
-      return this._def;
+      return this._def.promise();
     }
 
     // If a deferred doesn't exist, create one.  If the clear flag is provided,
@@ -48,7 +48,7 @@ _.each(["Model", "Collection"], function(ctor) {
     }, this));
 
     // Return the deferred to wait with.
-    return this._def;
+    return this._def.promise();
   };
 
   // Allow the jQuery dependency to be swapped out to use this in other
