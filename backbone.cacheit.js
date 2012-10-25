@@ -13,7 +13,7 @@ var $ = window.$;
 var _ = window._;
 
 // Retain a copy of the original fetch method, since we are overidding it.
-var fetch = Backbone.Collection.prototype.fetch;
+var oldFetch = Backbone.Collection.prototype.fetch;
 
 // Patch the fetch method to retain a reference.
 _.each(["Model", "Collection"], function(ctor) {
@@ -22,26 +22,25 @@ _.each(["Model", "Collection"], function(ctor) {
     options = options || {};
 
     // Save a reference to the original deferred.
-    var old = this._def;
+    var oldDef = this._def;
 
-    // If a deferred doesn't exist, create one.  If the clear flag is provided,
-    // jump in to create a new deferred.
-    if (!this._def || options.reload || this.reload) {
-      // 
-      this._def = newFetch.deferred();
-
-      // If the clear was provided and there is an existing deferred, resolve it
-      // once this has resolved.
-      if (options.reload && old) {
-        this._def.done(old.resolve);
-      }
-    } else {
-      // Return early.
+    // Return early.
+    if (this._def && !options.reload && !this.reload) {
       return this._def;
     }
 
+    // If a deferred doesn't exist, create one.  If the clear flag is provided,
+    // jump in to create a new deferred.
+    this._def = newFetch.deferred();
+
+    // If the clear was provided and there is an existing deferred, resolve it
+    // once this has resolved.
+    if (options.reload && oldDef) {
+      this._def.done(oldDef.resolve);
+    }
+
     // Call the original `fetch` method and store its return value (jqXHR).
-    var req = fetch.apply(this, arguments);
+    var req = oldFetch.apply(this, arguments);
 
     // Once the request has finished, resolve this deferred.
     req.done(_.bind(function() {

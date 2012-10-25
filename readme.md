@@ -33,13 +33,17 @@ Backbone.Collection.extend({
 }):
 ```
 
+Since you're getting a brand new deferred and nothing ever happens to the old
+one you can be assured that fetch callbacks will only trigger after the most
+recent `fetch` has completed.
+
 If you want use `underscore.deferred` or some other implementation you can
 specify an override to swap out that dependency.
 
 ``` javascript
 Backbone.Collection.prototype.fetch.deferred = function() {
   return _.Deferred();
-}
+};
 ```
 
 ## Release notes ##
