@@ -12,11 +12,11 @@ var Backbone = window.Backbone;
 var $ = window.$;
 var _ = window._;
 
-// Retain a copy of the original fetch method, since we are overidding it.
-var oldFetch = Backbone.Collection.prototype.fetch;
-
 // Patch the fetch method to retain a reference.
 _.each(["Model", "Collection"], function(ctor) {
+  // Retain a copy of the original fetch method, since we are overidding it.
+  var oldFetch = Backbone[ctor].prototype.fetch;
+
   // Override both Model and Collection `fetch` methods.
   var newFetch = Backbone[ctor].prototype.fetch = function(options) {
     options = options || {};
