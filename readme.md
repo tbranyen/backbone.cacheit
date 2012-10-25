@@ -46,6 +46,16 @@ Backbone.Collection.prototype.fetch.deferred = function() {
 };
 ```
 
+### Notes on SafeSync ###
+
+It's entirely possible that requests will come back out of order if you use the
+`{ reload: true }` option.  This is most likely not your intention.  If you
+agree, you should put the following plugin into your project.  CacheIt will
+work seamlessly.
+
+
+https://github.com/amccloud/backbone-safesync
+
 ## Release notes ##
 
 ### 0.0.1 ###
