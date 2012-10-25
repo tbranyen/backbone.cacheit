@@ -7,7 +7,7 @@ module("basic", {
   setup: function() {
     Backbone.sync = function(method, model, options) {
       // Create a new count or reuse and increment.
-      var count = model._count = model._count ? model._count++ : 1;
+      var count = model._count = model._count ? ++model._count : 1;
       var def = $.Deferred();
 
       // Simulate asynchronous traffic.
@@ -37,12 +37,29 @@ asyncTest("Basic behaviors work correctly.", function() {
 
   c.fetch().then(function(c) {
     equal(c.length, 1, "Length is correct");
-    ok(c.at(0) instanceof Backbone.Model, "First element is a Backbone.Model");
+    ok(c.at(0) instanceof Backbone.Model, "First element is a Backbone.Model.");
     equal(c.at(0).get("count"), 1, "Only called once.");
 
     c.fetch().then(function() {
-      equal(c.length, 1, "Length is correct");
+      equal(c.length, 1, "Length is correct.");
       equal(c.at(0).get("count"), 1, "Only called once.");
+
+      start();
+    });
+  });
+});
+
+asyncTest("Reloading works correctly.", function() {
+  var c = new this.Collection();
+
+  c.fetch().then(function(c) {
+    equal(c.length, 1, "Length is correct.");
+    ok(c.at(0) instanceof Backbone.Model, "First element is a Backbone.Model.");
+    equal(c.at(0).get("count"), 1, "Only called once.");
+
+    c.fetch({ reload: true }).then(function() {
+      equal(c.length, 1, "Length is correct.");
+      equal(c.at(0).get("count"), 2, "Called twice.");
 
       start();
     });
