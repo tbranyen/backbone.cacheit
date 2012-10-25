@@ -10,10 +10,9 @@
 // Localize global dependency references.
 var Backbone = window.Backbone;
 var $ = window.$;
-var _ = window._;
 
 // Patch the fetch method to retain a reference.
-_.each(["Model", "Collection"], function(ctor) {
+$.each(["Model", "Collection"], function(index, ctor) {
   // Retain a copy of the original fetch method, since we are overidding it.
   var oldFetch = Backbone[ctor].prototype.fetch;
 
@@ -43,7 +42,7 @@ _.each(["Model", "Collection"], function(ctor) {
     var req = oldFetch.apply(this, arguments);
 
     // Once the request has finished, resolve this deferred.
-    req.done(_.bind(function() {
+    req.done($.proxy(function() {
       this._def.resolveWith(this, [this]);
     }, this));
 
