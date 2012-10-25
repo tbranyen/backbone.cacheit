@@ -32,7 +32,7 @@ module("basic", {
   }
 });
 
-asyncTest("Basic behaviors work correctly.", function() {
+asyncTest("Basic behaviors work correctly.", 5, function() {
   var c = new this.Collection();
 
   c.fetch().then(function(c) {
@@ -49,7 +49,7 @@ asyncTest("Basic behaviors work correctly.", function() {
   });
 });
 
-asyncTest("Reloading works correctly.", function() {
+asyncTest("Reloading works correctly.", 5, function() {
   var c = new this.Collection();
 
   c.fetch().then(function(c) {
@@ -58,9 +58,22 @@ asyncTest("Reloading works correctly.", function() {
     equal(c.at(0).get("count"), 1, "Only called once.");
 
     c.fetch({ reload: true }).then(function() {
-      equal(c.length, 1, "Length is correct.");
-      equal(c.at(0).get("count"), 2, "Called twice.");
+      c.fetch({ reload: true }).then(function() {
+        equal(c.length, 1, "Length is correct.");
+        equal(c.at(0).get("count"), 3, "Called three times.");
 
+        start();
+      });
+    });
+  });
+});
+
+asyncTest("Order maintained", function() {
+  var c = new this.Collection();
+
+  c.fetch().then(function() {
+    c.fetch({ reload: true }).then(function() {
+      equal(c.at(0).get("count"), 2, "Rendered twice inside the deferred.");
       start();
     });
   });
