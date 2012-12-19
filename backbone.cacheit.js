@@ -42,9 +42,11 @@ _.each(["Model", "Collection"], function(ctor) {
     // Call the original `fetch` method and store its return value (jqXHR).
     var req = oldFetch.apply(this, arguments);
 
-    // Once the request has finished, resolve this deferred.
+    // Once the request has finished, resolve / reject this deferred as needed
     req.done(_.bind(function() {
       this._def.resolveWith(this, [this]);
+    }, this)).fail(_.bind(function() {
+      this._def.rejectWith(this, [this]);
     }, this));
 
     // Return the deferred to wait with.
