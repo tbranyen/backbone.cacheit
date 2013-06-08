@@ -8,7 +8,7 @@ Status](https://travis-ci.org/tbranyen/backbone.cacheit.png?branch=master)](http
 
 Maintained by Tim Branyen [@tbranyen](http://twitter.com/tbranyen) with help
 from [awesome
-contributors](https://github.com/tbranyen/vertebrae/contributors)!
+contributors](https://github.com/tbranyen/backbone.cacheit/contributors)!
 
 This is useful for when you have Models and Collections that once data is
 fetched you can operate with the same dataset throughout the lifetime of your
