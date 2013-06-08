@@ -1,6 +1,5 @@
 /* 
- * Test Module: Basic
- * Ensures that CacheIt can do its basic tasks.
+ * Test Module: Basic * Ensures that CacheIt can do its basic tasks.
  *
  */
 module("basic", {

@@ -1,7 +1,14 @@
-backbone.cacheit v0.0.1
-=======================
+backbone.cacheit
+================
 
-Created by Tim Branyen [@tbranyen](http://twitter.com/tbranyen).
+> Fetch caching made super simple in Backbone.
+
+**v0.1.0-pre** [![Build
+Status](https://travis-ci.org/tbranyen/backbone.cacheit.png?branch=master)](https://travis-ci.org/tbranyen/backbone.cacheit)
+
+Maintained by Tim Branyen [@tbranyen](http://twitter.com/tbranyen) with help
+from [awesome
+contributors](https://github.com/tbranyen/vertebrae/contributors)!
 
 This is useful for when you have Models and Collections that once data is
 fetched you can operate with the same dataset throughout the lifetime of your
@@ -10,6 +17,23 @@ application.  Whatever route your application starts with can safely call the
 
 Tested with Underscore, Backbone and jQuery. You can swap out jQuery with a
 custom configuration or substitute Underscore with Lo-Dash.
+
+## Getting started ##
+
+Include into existing Backbone application:
+
+``` html
+<!-- Optional dependencies. -->
+<script src="jquery.js"></script>
+<script src="underscore.js"></script>
+<script src="backbone.js"></script>
+
+<!-- Load the Backbone.cacheit plugin library. -->
+<script src="backbone.cacheit.js"></script>
+```
+
+Compatibility: Everything Backbone and jQuery supports? Let me know if you find
+issues.
 
 ## Documentation ##
 
@@ -53,10 +77,16 @@ It's entirely possible that requests will come back out of order if you use the
 agree, you should put the following plugin into your project.  CacheIt will
 work seamlessly.
 
-
 https://github.com/amccloud/backbone-safesync
 
 ## Release notes ##
+
+### 0.1.0-pre ###
+
+* Bringing it to the `tbranyen` project standard.  Just added a bunch of files
+  and compatibility with AMD, Grunt 0.4, etc.
+* Integrated a fix by @LoonyPandora to reject the deferred if the request
+  fails.
 
 ### 0.0.1 ###
 

@@ -1,16 +1,23 @@
 /*!
-* backbone.cacheit.js v0.1.0
-* Copyright 2012, Tim Branyen (@tbranyen)
-* backbone.cacheit.js may be freely distributed under the MIT license.
-*/
-(function(window) {
-
+ * backbone.cacheit.js v0.1.0-pre
+ * Copyright 2013, Tim Branyen (@tbranyen)
+ * backbone.cacheit.js may be freely distributed under the MIT license.
+ */
+(function(window) { 
 "use strict";
 
+// Normalize the `define` and `require` calls.
+var require = window.require || function() {};
+// Call the exports function or the crafted one with the Node.js `require`.
+var define = window.define || function(cb) { cb.call(this, require); };
+
+// Define the module contents.
+define(function(require) {
+
 // Localize global dependency references.
-var Backbone = window.Backbone;
-var $ = window.$;
-var _ = window._;
+var Backbone = require("backbone") || window.Backbone;
+var _ = require("underscore") || window._;
+var $ = require("jquery") || Backbone.$;
 
 // Patch the fetch method to retain a reference.
 _.each(["Model", "Collection"], function(ctor) {
@@ -60,4 +67,6 @@ _.each(["Model", "Collection"], function(ctor) {
   };
 });
 
-})(this);
+});
+
+})(typeof global === "object" ? global : this);

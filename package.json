@@ -2,27 +2,31 @@
   "author": "Tim Branyen (@tbranyen)",
   "name": "backbone.cacheit",
   "description": "Fetch caching made super simple in Backbone.",
-
-  "version": "0.1.0",
-
+  "version": "0.1.0-pre",
   "homepage": "http://tbranyen.github.com/backbone.cacheit/",
-
   "repository": {
     "type": "git",
     "url": "git://github.com/tbranyen/backbone.cacheit.git"
   },
-
+  "engines": {
+    "node": ">=0.8"
+  },
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-cli": "~0.1",
+    "grunt-contrib-jshint": "0.1.1rc5",
+    "grunt-contrib-qunit": "0.1.1rc5"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "main": "backbone.cacheit.js",
   "jam": {
     "dependencies": {
-      "lodash": "*",
-      "backbone": "*",
-      "jquery": "*"
+      "underscore": "~1.4",
+      "backbone": "~1.0",
+      "jquery": ">=1.6"
     },
-
-    "main": "backbone.cacheit.js",
-
-    "shim": {
-      "deps": ["jquery", "backbone", "lodash"]
-    }
+    "include": ["backbone.cacheit.js"]
   }
 }
