@@ -3,7 +3,7 @@
  * Copyright 2013, Tim Branyen (@tbranyen)
  * backbone.cacheit.js may be freely distributed under the MIT license.
  */
-(function(window) { 
+(function(window) {
 "use strict";
 
 // Normalize the `define` and `require` calls.
@@ -33,6 +33,9 @@ _.each(["Model", "Collection"], function(ctor) {
 
     // Return early.
     if (this._def && !options.reload && !this.reload) {
+      // Ensure optional success/error callbacks get called when re-using promise.
+      if(options.success) this._def.done(options.success);
+      if(options.error) this._def.fail(options.error);
       return this._def.promise();
     }
 
