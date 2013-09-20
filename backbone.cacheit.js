@@ -15,9 +15,9 @@ var define = window.define || function(cb) { cb.call(this, require); };
 define(function(require) {
 
 // Localize global dependency references.
-var Backbone = require("backbone") || window.Backbone;
-var _ = require("underscore") || window._;
-var $ = require("jquery") || Backbone.$;
+var Backbone = window.Backbone || require("backbone");
+var _ = window._ || require("underscore");
+var $ = Backbone.$ || require("jquery");
 
 // Patch the fetch method to retain a reference.
 _.each(["Model", "Collection"], function(ctor) {
