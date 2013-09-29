@@ -4,7 +4,7 @@
   "main": "backbone.cacheit.js",
   "dependencies": {
     "jquery": ">=1.6",
-    "underscore": "~1.4",
+    "underscore": "~1.5",
     "backbone": "~1.0"
   }
 }
