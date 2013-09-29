@@ -1,5 +1,5 @@
 {
-  "name": "cacheit",
+  "name": "backbone.cacheit",
   "version": "0.1.0-pre",
   "main": "backbone.cacheit.js",
   "dependencies": {
