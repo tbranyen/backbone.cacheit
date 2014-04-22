@@ -1,4 +1,4 @@
-/* 
+/*
  * Test Module: Basic * Ensures that CacheIt can do its basic tasks.
  *
  */
@@ -73,6 +73,20 @@ asyncTest("Order maintained", function() {
   c.fetch().then(function() {
     c.fetch({ reload: true }).then(function() {
       equal(c.at(0).get("count"), 2, "Rendered twice inside the deferred.");
+      start();
+    });
+  });
+});
+
+asyncTest("Success options are called.", function() {
+  var c = new this.Collection(),
+      successCount = 0,
+      incSuccess = function(){successCount++;};
+
+  c.fetch({success: incSuccess}).then(function() {
+    c.fetch({ success: incSuccess }).then(function() {
+      equal(c.length, 1, "Length is correct.");
+      equal(successCount, 2, "Calls success callbacks regardless of caching.");
       start();
     });
   });
