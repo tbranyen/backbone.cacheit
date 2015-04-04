@@ -1,6 +1,6 @@
 /*!
- * backbone.cacheit.js v0.1.0-pre
- * Copyright 2013, Tim Branyen (@tbranyen)
+ * backbone.cacheit.js v0.1.0
+ * Copyright 2015, Tim Branyen (@tbranyen)
  * backbone.cacheit.js may be freely distributed under the MIT license.
  */
 (function(window) {

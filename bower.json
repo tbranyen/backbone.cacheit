@@ -1,6 +1,6 @@
 {
   "name": "backbone.cacheit",
-  "version": "0.1.0-pre",
+  "version": "0.1.0",
   "main": "backbone.cacheit.js",
   "dependencies": {
     "jquery": ">=1.6",

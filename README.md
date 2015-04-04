@@ -3,7 +3,7 @@ backbone.cacheit
 
 > Fetch caching made super simple in Backbone.
 
-**v0.1.0-pre** [![Build
+**v0.1.0** [![Build
 Status](https://travis-ci.org/tbranyen/backbone.cacheit.png?branch=master)](https://travis-ci.org/tbranyen/backbone.cacheit)
 
 Maintained by Tim Branyen [@tbranyen](http://twitter.com/tbranyen) with help
