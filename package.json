@@ -8,14 +8,11 @@
     "type": "git",
     "url": "git://github.com/tbranyen/backbone.cacheit.git"
   },
-  "engines": {
-    "node": ">=0.8"
-  },
   "devDependencies": {
-    "grunt": "~0.4",
-    "grunt-cli": "~0.1",
-    "grunt-contrib-jshint": "0.1.1rc5",
-    "grunt-contrib-qunit": "0.1.1rc5"
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.1",
+    "grunt-contrib-qunit": "^0.7.0"
   },
   "peerDependencies": {
     "jquery": ">=1.6",
